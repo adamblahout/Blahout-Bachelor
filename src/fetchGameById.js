@@ -1,9 +1,7 @@
 const fetchGameById = async ({ queryKey }) => {
   const id = queryKey[1];
 
-  const response = await fetch(
-    `https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/game?id=${id}`
-  );
+  const response = await fetch(`https://www.freetogame.com/api/game?id=${id}`);
 
   if (!response.ok) {
     throw new Error(`details/${id} fetch not ok`);

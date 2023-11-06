@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 
 const fetchAllGames = async () => {
-  const response = await fetch(`https://www.freetogame.com/api/games`, { mode: 'no-cors'});
+  const response = await fetch(
+    `https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games`
+  );
 
   if (!response.ok) {
     throw new Error(`details fetch not ok`);

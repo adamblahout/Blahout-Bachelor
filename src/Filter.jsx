@@ -54,13 +54,12 @@ function Filter(props) {
   const { setFilter, setAllGames } = props;
   const [genre, setGenre] = useState("");
 
-  const { data: allGames, isLoading: isAllGamesLoading } = useFetchAllGames();
-  const { data: gamesByGenre, isLoading: isGamesByGenreLoading } =
-    useFetchGamesByGenre(genre);
-
-  console.log(genre);
-
-  console.log(isGamesByGenreLoading, "I am loading");
+  const {
+    data: allGames,
+    isLoading: isAllGamesLoading,
+    error,
+  } = useFetchAllGames();
+  const { data: gamesByGenre } = useFetchGamesByGenre(genre);
 
   useEffect(() => {
     if (genre) {
@@ -115,6 +114,18 @@ function Filter(props) {
           ))}
         </select>
       </div>
+      {error && (
+        <p className="mt-12 text-center font-bold">
+          Nastala chyba. Prosím doinstalujte si a zároveň aktivujte rozšíření:{" "}
+          <a
+            href="https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?pli=1"
+            className="text-blue-700 underline transition-all hover:text-blue-400"
+            target="__blank"
+          >
+            CORS Policy
+          </a>
+        </p>
+      )}
     </div>
   );
 }

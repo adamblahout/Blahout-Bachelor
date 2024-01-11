@@ -14,14 +14,11 @@ function Details() {
     );
   }
   const game = results.data;
-  console.log(game);
-  console.log(game.screenshots.image);
 
   const images = game.screenshots;
 
   let systemRequirements = game.minimum_system_requirements;
 
-  console.log(game.minimum_system_requirements);
   return (
     <div className="game">
       <h1 className="text-center text-2xl font-bold">{game.title}</h1>
